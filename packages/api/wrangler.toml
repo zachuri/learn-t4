@@ -1,0 +1,55 @@
+name = "t4-api"
+compatibility_date = "2023-10-16"
+send_metrics = false
+node_compat = true
+main = "src/worker.ts"
+account_id = "719e3374c9fabba87860b809acb3c939"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "production"
+database_id = "aa5e3923-0f1b-469a-8bb8-d10fb866efe0"
+migrations_dir = "migrations"
+
+[triggers]
+# Schedule cron triggers:
+# examples:
+# - At every 3rd minute
+# - At 3PM on first day of the month
+# - At 11:59PM on the last weekday of the month
+# crons = [ "*/3 * * * *", "0 15 1 * *", "59 23 LW * *" ]
+# For now, we're using "15 2 * * sat" to delete expired sessions from the database weekly
+# Test locally with "http://localhost:8787/__scheduled?cron=15+2+*+*+sat"
+crons = [ "15 2 * * sat" ]
+
+
+# The necessary secrets are:
+# - APP_URL - for preventing CORS errors
+# - JWT_VERIFICATION_KEY - for Supabase @link https://supabase.com
+#
+# Other env variables for auth:
+#
+# - APPLE_CLIENT_ID
+# - APPLE_TEAM_ID
+# - APPLE_KEY_ID
+# - APPLE_CERTIFICATE
+# - DISCORD_CLIENT_ID
+# - DISCORD_CLIENT_SECRET
+# - GITHUB_CLIENT_ID
+# - GITHUB_CLIENT_SECRET
+# - GOOGLE_CLIENT_ID
+# - GOOGLE_CLIENT_SECRET
+# - RESEND_API_KEY
+# - PUBLIC_SUPPORT_EMAIL
+# - PUBLIC_API_URL
+# - PUBLIC_NATIVE_SCHEME
+#
+# These can be set in the top level .env.local file followed by running `bun i`
+# which will then generate a .dev.vars file used for local cloudflare development.
+#
+# For deployed environments, you can use wrangler secrets to set these values.
+# For example:
+# Run `echo <VALUE> | wrangler secret put <NAME>` for each of these
+# Or use the Cloudflare web interface.
+# @link https://developers.cloudflare.com/workers/platform/environment-variables/#environment-variables-via-the-dashboard
+#

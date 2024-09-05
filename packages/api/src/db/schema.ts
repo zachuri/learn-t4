@@ -1,10 +1,10 @@
-import { InferSelectModel, InferInsertModel, relations, sql } from 'drizzle-orm'
-import { pgTable, text, integer, doublePrecision, index, timestamp } from 'drizzle-orm/pg-core'
+import { InferInsertModel, InferSelectModel, relations, sql } from 'drizzle-orm'
+import { doublePrecision, index, integer, pgTable, text, timestamp } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-valibot'
 import { HASH_METHODS } from '../utils/password/hash-methods'
 
 // User
-export const UserTable = pgTable('User', {
+export const UserTable = pgTable('user', {
   id: text('id').notNull().primaryKey(),
   email: text('email').notNull(),
 })
@@ -22,7 +22,7 @@ export const selectUserSchema = createSelectSchema(UserTable)
 // The id consists of a provider type combined with a provider id
 // https://lucia-auth.com/basics/keys/
 export const AuthMethodTable = pgTable(
-  'AuthMethod',
+  'authMethod',
   {
     id: text('id').primaryKey(),
     userId: text('user_id')
@@ -56,7 +56,7 @@ export type InsertAuthMethod = InferInsertModel<typeof AuthMethodTable>
 export const AuthMethodSchema = createInsertSchema(AuthMethodTable)
 
 export const SessionTable = pgTable(
-  'Session',
+  'session',
   {
     id: text('id').notNull().primaryKey(),
     userId: text('user_id')
@@ -79,7 +79,7 @@ export type InsertSession = InferInsertModel<typeof SessionTable>
 export const SessionSchema = createInsertSchema(SessionTable)
 
 // Car
-export const CarTable = pgTable('Car', {
+export const CarTable = pgTable('car', {
   id: text('id').primaryKey(),
   make: text('make').notNull(),
   model: text('model').notNull(),
@@ -87,7 +87,7 @@ export const CarTable = pgTable('Car', {
   color: text('color').notNull(),
   price: doublePrecision('price').notNull(),
   mileage: integer('mileage').notNull(),
-  fuelType: text('fuelType').notNull(),
+  fuelType: text('fuel_type').notNull(),
   transmission: text('transmission').notNull(),
 })
 export type Car = InferSelectModel<typeof CarTable>

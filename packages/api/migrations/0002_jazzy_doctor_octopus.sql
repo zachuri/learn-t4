@@ -1,0 +1,1 @@
+ALTER TABLE "car" RENAME COLUMN "fuelType" TO "fuel_type";

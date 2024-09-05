@@ -5,7 +5,7 @@ import { Hono, type Context, type Next } from 'hono'
 import { cors } from 'hono/cors'
 import scheduled from './scheduled'
 
-export type Bindings = Env & {
+export type Bindings = {
   JWT_VERIFICATION_KEY: string
   APP_URL: string
   // For Neon DB

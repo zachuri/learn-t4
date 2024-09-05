@@ -1,15 +1,15 @@
-import { type Session } from './auth/user'
-import { createDb } from './db/client'
-import type { DB } from './db/client'
-import type { User } from './db/schema'
-import { Bindings } from './worker'
 import type { inferAsyncReturnType } from '@trpc/server'
 import type { Context as HonoContext, HonoRequest } from 'hono'
+import { getCookie } from 'hono/cookie'
 import type { Lucia } from 'lucia'
 import { verifyRequestOrigin } from 'oslo/request'
-import { verifyToken } from './utils/crypto'
 import { createAuth, getAllowedOriginHost } from './auth'
-import { getCookie } from 'hono/cookie'
+import { type Session } from './auth/user'
+import type { DB } from './db/client'
+import { createDb } from './db/client'
+import type { User } from './db/schema'
+import { verifyToken } from './utils/crypto'
+import { Bindings } from './worker'
 
 export interface ApiContextProps {
   session?: Session
@@ -31,7 +31,7 @@ export const createContext = async (
   if (!env.DB) {
     throw new Error('Database binding is undefined')
   }
-  const db = createDb(env.DB)
+  const db = createDb(env.DATABASE_URL)
 
   // This was used with supabase auth,
   // For lucia, we pass just the session ID rather than a JWT

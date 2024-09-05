@@ -1,5 +1,5 @@
 import { Adapter, Lucia, TimeSpan } from 'lucia'
-import { DrizzleSQLiteAdapter } from '@lucia-auth/adapter-drizzle'
+import { DrizzlePostgreSQLAdapter } from '@lucia-auth/adapter-drizzle'
 import { SessionTable, UserTable } from '../db/schema'
 import { DB } from '../db/client'
 
@@ -19,8 +19,7 @@ export const getAllowedOriginHost = (app_url: string, request?: Request) => {
 }
 
 export const createAuth = (db: DB, appUrl: string) => {
-  // @ts-ignore Expect type errors because this is D1 and not SQLite... but it works
-  const adapter = new DrizzleSQLiteAdapter(db, SessionTable, UserTable)
+  const adapter = new DrizzlePostgreSQLAdapter(db, SessionTable, UserTable)
   const env = !appUrl || appUrl.startsWith('http:') ? 'DEV' : 'PROD'
   return new Lucia(adapter as Adapter, {
     getUserAttributes: (data: DatabaseUserAttributes) => {

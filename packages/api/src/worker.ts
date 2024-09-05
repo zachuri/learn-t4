@@ -1,13 +1,17 @@
-import { Hono, type Context, type Next } from 'hono'
-import { appRouter } from '@t4/api/src/router'
-import { cors } from 'hono/cors'
-import { createContext } from '@t4/api/src/context'
 import { trpcServer } from '@hono/trpc-server'
+import { createContext } from '@t4/api/src/context'
+import { appRouter } from '@t4/api/src/router'
+import { Hono, type Context, type Next } from 'hono'
+import { cors } from 'hono/cors'
 import scheduled from './scheduled'
 
 export type Bindings = Env & {
   JWT_VERIFICATION_KEY: string
   APP_URL: string
+  // For Neon DB
+  DATABASE_URL: string
+  JWT_SECRET: string
+
   // For auth
   APPLE_CLIENT_ID: string
   APPLE_TEAM_ID: string

@@ -1,13 +1,15 @@
-import type { Config } from 'drizzle-kit'
+import { config } from 'dotenv'
 
-export default {
-  schema: './src/db/schema.ts',
+config({
+  path: '.dev.vars',
+})
+
+import { defineConfig } from 'drizzle-kit'
+export default defineConfig({
+  schema: './src/db/schema.ts', //separate the schemas
   out: './migrations',
-  driver: 'd1',
+  driver: 'pg',
   dbCredentials: {
-    wranglerConfigPath: 'wrangler.toml',
-    dbName: 'production',
+    connectionString: process.env.DATABASE_URL!,
   },
-  verbose: false,
-  strict: true,
-} satisfies Config
+})

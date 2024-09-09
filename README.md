@@ -99,8 +99,8 @@ Ship it today and witness **6 second package install** times & **30 second backe
 
 - 🔥 [Hono](https://hono.dev)
 - 💚 [Cloudflare Workers](https://workers.cloudflare.com)
-- 📁 [Cloudflare D1](https://developers.cloudflare.com/d1)
-  - [SQLite](https://sqlite.org) database for the edge
+- 📁 [Neon Serverless Postgres](https://console.neon.tech/)
+  - [PostgreSQL](https://www.postgresql.org/) database for the edge
 - 🗄️ [Drizzle](https://orm.drizzle.team)
 
 ### 🔒 Authentication

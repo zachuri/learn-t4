@@ -28,7 +28,7 @@ export const createContext = async (
   context?: HonoContext,
   resHeaders?: Headers
 ): Promise<ApiContextProps> => {
-  if (!env.DB) {
+  if (!env.DATABASE_URL) {
     throw new Error('Database binding is undefined')
   }
   const db = createDb(env.DATABASE_URL)

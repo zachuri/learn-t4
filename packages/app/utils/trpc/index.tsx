@@ -8,7 +8,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { httpBatchLink } from '@trpc/client'
 import { useState } from 'react'
 import superjson from 'superjson'
-import { replaceLocalhost } from './localhost.native'
 import { getSessionToken } from '../auth/credentials'
 
 /**
@@ -18,7 +17,11 @@ export const trpc = createTRPCReact<AppRouter>()
 
 const getApiUrl = () => {
   const apiUrl = `${process.env.EXPO_PUBLIC_API_URL}`
-  return replaceLocalhost(apiUrl)
+  // Note: Uncomment to use localhost
+  // Solution: https://discord.com/channels/1117289587472081016/1208826425902108703/1209067524944302150
+  // return replaceLocalhost(apiUrl)
+  // ! NOTE: Uncomment this for android
+  return apiUrl
 }
 
 export const TRPCProvider: React.FC<{

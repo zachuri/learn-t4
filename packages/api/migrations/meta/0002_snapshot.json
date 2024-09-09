@@ -1,11 +1,11 @@
 {
-  "id": "e25ff3d0-d59d-451a-8969-713a16c132d8",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "ecd2acba-5301-43c5-bdab-b3f63e41320c",
+  "prevId": "c326ff9e-a4e8-46d8-b378-9bf8b67a76ac",
   "version": "5",
   "dialect": "pg",
   "tables": {
-    "AuthMethod": {
-      "name": "AuthMethod",
+    "authMethod": {
+      "name": "authMethod",
       "schema": "",
       "columns": {
         "id": {
@@ -72,10 +72,10 @@
         }
       },
       "foreignKeys": {
-        "AuthMethod_user_id_User_id_fk": {
-          "name": "AuthMethod_user_id_User_id_fk",
-          "tableFrom": "AuthMethod",
-          "tableTo": "User",
+        "authMethod_user_id_user_id_fk": {
+          "name": "authMethod_user_id_user_id_fk",
+          "tableFrom": "authMethod",
+          "tableTo": "user",
           "columnsFrom": ["user_id"],
           "columnsTo": ["id"],
           "onDelete": "no action",
@@ -85,8 +85,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "Car": {
-      "name": "Car",
+    "car": {
+      "name": "car",
       "schema": "",
       "columns": {
         "id": {
@@ -131,8 +131,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "fuelType": {
-          "name": "fuelType",
+        "fuel_type": {
+          "name": "fuel_type",
           "type": "text",
           "primaryKey": false,
           "notNull": true
@@ -149,8 +149,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "Session": {
-      "name": "Session",
+    "session": {
+      "name": "session",
       "schema": "",
       "columns": {
         "id": {
@@ -180,10 +180,10 @@
         }
       },
       "foreignKeys": {
-        "Session_user_id_User_id_fk": {
-          "name": "Session_user_id_User_id_fk",
-          "tableFrom": "Session",
-          "tableTo": "User",
+        "session_user_id_user_id_fk": {
+          "name": "session_user_id_user_id_fk",
+          "tableFrom": "session",
+          "tableTo": "user",
           "columnsFrom": ["user_id"],
           "columnsTo": ["id"],
           "onDelete": "no action",
@@ -193,8 +193,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "User": {
-      "name": "User",
+    "user": {
+      "name": "user",
       "schema": "",
       "columns": {
         "id": {
